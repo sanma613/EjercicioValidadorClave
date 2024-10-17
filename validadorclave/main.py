@@ -32,4 +32,16 @@ class ReglaValidacion(ABC):
                 return True
         return False
 
+class ReglaValidacionGanimedes(ReglaValidacion):
+
+    def es_valida(self, clave):
+        if self.contiene_caracter_especial:
+            return True
+        return False
+    
+    def contiene_caracter_especial(self, clave: str) -> bool:
+        for caracter in clave:
+            if caracter in '@_#$%':
+                return True
+        return False
 
