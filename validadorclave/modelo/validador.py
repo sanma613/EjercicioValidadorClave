@@ -65,10 +65,6 @@ class ReglaValidacionCalisto(ReglaValidacion):
     def es_valida(self, clave: str):
         if not self._validar_longitud(clave):
             raise NoCumpleLongitudMinimaError('La clave debe tener una longitud de más de 8 caracteres')
-        if not self._contiene_mayuscula(clave):
-            raise NoTieneLetraMayusculaError('La clave debe tener al menos una mayúscula')
-        if not self._contiene_minuscula(clave):
-            raise NoTieneLetraMinusculaError('La clave debe tener al menos una minuscula')
         if not self._contiene_numero(clave):
             raise NoTieneNumeroError('La clave debe tener al menos un numero')
         if not self.contiene_calisto(clave):
