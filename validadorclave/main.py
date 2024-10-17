@@ -4,8 +4,7 @@ from validadorclave.modelo.errores import ValidadorError
 def validar_clave(clave: str, reglasValidacion: list[ReglaValidacion]):
     try:
         for regla in reglasValidacion:
-            re = Validador(regla())
-            status = re.es_valida(clave)
+            status = Validador(regla().es_valida(clave))
     except ValidadorError as e:
         print(f'Error: {regla.__name__}: {e}')
     else:

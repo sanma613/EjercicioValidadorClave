@@ -42,13 +42,13 @@ class ReglaValidacionGanimedes(ReglaValidacion):
         if not self._validar_longitud(clave):
             raise NoCumpleLongitudMinimaError('La clave debe tener una longitud de más de 8 caracteres')
         if not self._contiene_mayuscula(clave):
-            raise NoTieneLetraMayusculaError('Sin mayuscula')
+            raise NoTieneLetraMayusculaError('La clave debe tener al menos una mayúscula')
         if not self._contiene_minuscula(clave):
-            raise NoTieneLetraMinusculaError('Sin minuscula')
+            raise NoTieneLetraMinusculaError('La clave debe tener al menos una minuscula')
         if not self._contiene_numero(clave):
-            raise NoTieneNumeroError('Sin numero')
+            raise NoTieneNumeroError('La clave debe tener al menos un numero')
         if not self.contiene_caracter_especial(clave):
-            raise NoTieneCaracterEspecialError('Clave sin caracteres especiales.')
+            raise NoTieneCaracterEspecialError('La clave debe tener al menos un caracter especial')
         return True
     
     def contiene_caracter_especial(self, clave: str) -> bool:
@@ -66,11 +66,11 @@ class ReglaValidacionCalisto(ReglaValidacion):
         if not self._validar_longitud(clave):
             raise NoCumpleLongitudMinimaError('La clave debe tener una longitud de más de 8 caracteres')
         if not self._contiene_mayuscula(clave):
-            raise NoTieneLetraMayusculaError('Sin mayuscula')
+            raise NoTieneLetraMayusculaError('La clave debe tener al menos una mayúscula')
         if not self._contiene_minuscula(clave):
-            raise NoTieneLetraMinusculaError('Sin minuscula')
+            raise NoTieneLetraMinusculaError('La clave debe tener al menos una minuscula')
         if not self._contiene_numero(clave):
-            raise NoTieneNumeroError('Sin numero')
+            raise NoTieneNumeroError('La clave debe tener al menos un numero')
         if not self.contiene_calisto(clave):
             raise NoTienePalabraSecretaError('La palabra calisto debe estar escrita con al menos dos letras en mayúscula')
         return True
@@ -81,9 +81,8 @@ class ReglaValidacionCalisto(ReglaValidacion):
             for caracter in clave:
                 if caracter.isupper():
                     caracter_mayus += 1
-            if caracter_mayus >= 2 and caracter_mayus < len('calisto'):
+            if caracter_mayus >= 2 and caracter_mayus < 7:
                 return True
-            return False
         return False
 
 class Validador:
